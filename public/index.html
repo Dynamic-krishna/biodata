@@ -93,10 +93,10 @@
 
     #main-content {
       display: none;
-      margin: 20px;
+      margin: 11px 23px;
       border: 2px solid aqua;
       border-radius: 20px;
-      height: 85vh;
+      height: 100%;
       padding: 2px;
       position: relative;
       justify-content: center;
@@ -122,11 +122,12 @@
     }
     .book-container {
       display: flex;
-      justify-content: center;
+      justify-content: baseline;
       align-items: center;
       width: 100%;
       height: 100%;
       flex-direction: column;
+      overflow: scroll;
     }
 
     .image-wrapper img {
@@ -138,7 +139,7 @@
       margin: 2px;
     }
 
-        /* Book container */
+    /* Book container */
     .book {
       width: 420px;
       margin: 40px auto;
@@ -204,12 +205,12 @@
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 10px;
-      position: relative;
+      /* position: relative; */
       width: 90%;
-      height: 90%;
+      /* height: 90%; */
       box-shadow: 4px 5px aliceblue;
       background-color: rgba(255, 255, 255, 1);
-      overflow: scroll;
+      /* overflow: scroll; */
     }
 
     .slider-container {
@@ -275,7 +276,35 @@
       overflow: hidden;
     }
 
+    @media (min-width: 900px) and (max-width: 3700px) {
+      #main-content {
+        flex-direction: none;
+        overflow: scroll;
+      }
 
+      .intro,
+      .details {
+        margin: 12px 11px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        position: initial;
+        width: 42%;
+        height: 90%;
+        box-shadow: 4px 5px aliceblue;
+        background-color: rgba(255, 255, 255, 1);
+      }
+
+      .book-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+        flex-direction: initial;
+      }
+    }
   </style>
 
   <body>
@@ -333,14 +362,21 @@
             <li><strong>नाम -:</strong>कान सिंह राठौर (Kaan Singh Rathore)</li>
             <li><strong>लम्बाई -:</strong>5 फुट 9 इंच (5 Foot 9 Inch)</li>
             <li><strong>जन्म दिनांक -:</strong>7 अगस्त 1999 (07/08/1999)</li>
-            <li><strong>कार्य -:</strong> Web Developer and PF Esic Consultant </li>
+            <li>
+              <strong>कार्य -:</strong> Web Developer and PF Esic Consultant
+            </li>
             <li><strong>शिक्षण -:</strong>B.Tech (Computer Science)</li>
-            <li><strong>पिता -:</strong> मनोहर सिंह राठौर ( Manohar Singh Rathore )</li>
+            <li>
+              <strong>पिता -:</strong> मनोहर सिंह राठौर ( Manohar Singh Rathore
+              )
+            </li>
             <li><strong>मो. -:</strong>7891017587 ,9351449699</li>
             <li><strong>माता -:</strong>संतोष कंवर ( Santosh Kanwar )</li>
-            <li><strong>दादाजी -:</strong>माधो सिंह राठौर (Madho Singh Rathore)</li>
+            <li>
+              <strong>दादाजी -:</strong>माधो सिंह राठौर (Madho Singh Rathore)
+            </li>
             <li><strong>गोत्र -:</strong> मेड़तिया राठौर ( माधो-दासोत )</li>
-            <li><strong>ननिहाल -:</strong>निर्वाण </li>
+            <li><strong>ननिहाल -:</strong>निर्वाण</li>
             <li><strong>जन्म स्थान -:</strong>जयपुर ( Jaipur )</li>
           </ul>
         </div>
