@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bio Data</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/7fd5b7d9cc.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+  </head>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 5s ease;
+    }
+
+    #splash-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .splash-container {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .splash-container .text {
+      padding-inline-start: 20px;
+    }
+
+    .splash-container .text .anima-text {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      margin: 5px 0;
+      display: inline-block;
+      opacity: 0;
+      transform: translateX(-60px) rotate(-6deg) scale(0.98);
+      animation: slideIn 700ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    .splash img {
+      mix-blend-mode: color-burn;
+      image-rendering: smooth;
+      box-shadow: -69px 4px 71px 5px;
+      border-radius: 56%;
+      opacity: 0;
+      transform: translateX(-60px) rotate(-6deg) scale(0.98);
+      animation: slideIn 700ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    .splash-container .text .anima-text:nth-child(1) {
+      animation-delay: 0.15s;
+    }
+    .splash-container .text .anima-text:nth-child(2) {
+      animation-delay: 0.35s;
+    }
+    .splash-container .text .anima-text:nth-child(3) {
+      animation-delay: 0.55s;
+    }
+    .splash-container .text .anima-text:nth-child(4) {
+      animation-delay: 0.75s;
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0) rotate(0) scale(1);
+      }
+    }
+
+    #main-content {
+      display: none;
+      margin: 20px;
+      border: 2px solid aqua;
+      border-radius: 20px;
+      height: 85vh;
+      padding: 2px;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .rotating-light {
+      box-shadow: 0 0 20px 5px rgba(0, 255, 255, 0.7);
+      animation: rotateLight 3s linear infinite;
+    }
+
+    @keyframes rotateLight {
+      0% {
+        box-shadow: 0 0 20px 5px rgba(0, 255, 255, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 30px 10px rgb(250, 119, 32);
+      }
+      100% {
+        box-shadow: 0 0 20px 5px rgba(126, 32, 248, 0.7);
+      }
+    }
+    .book-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 26px;
+      margin: 2px;
+    }
+
+        /* Book container */
+    .book {
+      width: 420px;
+      margin: 40px auto;
+      background: #fdfaf5;
+      border-radius: 4px;
+      padding: 30px 25px;
+      position: relative;
+
+      /* Book depth */
+      box-shadow: 0 0 0 1px #c4b7a6, 6px 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Book spine */
+    .book::before {
+      content: "";
+      position: absolute;
+      left: -15px;
+      top: 0;
+      width: 15px;
+      height: 100%;
+      background: linear-gradient(to right, #b89b72, #e2d1b3);
+      border-radius: 4px 0 0 4px;
+    }
+
+    /* Heading like book title */
+    .book h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #d2c4aa;
+      padding-bottom: 10px;
+    }
+
+    /* Page text */
+    .book ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Each line looks handwritten on paper */
+    .book li {
+      padding: 8px 0;
+      font-size: 16px;
+      border-bottom: 1px dashed #ddd;
+      line-height: 1.6;
+    }
+
+    /* Bold labels */
+    .book li strong {
+      color: #6b4f2c;
+    }
+
+    /* Last line no border */
+    .book li:last-child {
+      border-bottom: none;
+    }
+
+    .intro,
+    .details {
+      margin: 10px 1px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      position: relative;
+      width: 42%;
+      height: 90%;
+      box-shadow: 4px 5px aliceblue;
+      background-color: rgba(255, 255, 255, 1);
+      overflow: scroll;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 6px 10px antiquewhite;
+    }
+
+    .image-wrapper {
+      display: flex;
+      height: 100%;
+      animation: slide 25s linear infinite;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-600%);
+      }
+    }
+
+    .details ul {
+      list-style-type: devanagari;
+      padding: 3px 28px;
+    }
+
+    .details ul li {
+      text-align: -webkit-left;
+      font-variant: all-small-caps;
+      font-family: san;
+      margin: 11px 12px;
+    }
+
+    .details ul li strong {
+      margin-right: 12px;
+      display: inline-block;
+    }
+
+    .intro p {
+      font-family: initial;
+      font-style: italic;
+      padding: 13px 17px;
+      font-weight: 500;
+      font-size: initial;
+      box-shadow: 4px 5px #acac5d9a;
+      background: rgba(250, 235, 215, 0.5);
+      border-radius: 10px;
+      line-height: 1.8;
+      text-align: justify;
+      overflow: hidden;
+    }
+
+
+  </style>
+
+  <body>
+    <div id="splash-screen">
+      <div class="splash-container">
+        <div class="splash">
+          <img src="lord.png" alt="Om Symbol" width="150" height="150" />
+        </div>
+
+        <div class="text">
+          <!-- <div class="anima-text">ॐ गं गणपतये नमः</div> -->
+          <div class="anima-text">ॐ</div>
+          <div class="anima-text">गं</div>
+          <div class="anima-text">गणपतये</div>
+          <div class="anima-text">नमः</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-content" class="rotating-light">
+      <div class="book-container">
+        <div class="intro">
+          <div class="slider-container">
+            <div class="image-wrapper">
+              <img src="img4.jpeg" alt="Image 1" />
+              <img src="img5.jpeg" alt="Image 2" />
+              <img src="img6.jpeg" alt="Image 3" />
+              <img src="img3.jpeg" alt="Image 4" />
+              <img src="img2.jpeg" alt="Image 5" />
+              <img src="img1.jpeg" alt="Image 6" />
+              <img src="img6.jpeg" alt="Image 3" />
+            </div>
+          </div>
+
+          <h5>Hey, There is an Intro about Myself</h5>
+          <h1>Krishna Singh Rathore</h1>
+
+          <p>
+            I am Krishna Singh Rathore, a passionate and dedicated individual
+            with a strong interest in technology and innovation. With a
+            background in computer science, I have honed my skills in software
+            development and problem-solving. I thrive in dynamic environments
+            where I can collaborate with like-minded individuals to create
+            impactful solutions. In my free time, I enjoy exploring new
+            technologies, reading about advancements in the tech world, and
+            engaging in outdoor activities. My goal is to continuously learn and
+            grow both personally and professionally, contributing positively to
+            the tech community.
+          </p>
+        </div>
+
+        <div class="details flip-horizontal book">
+          <h2>Personal Details</h2>
+          <ul>
+            <li><strong>नाम -:</strong>कान सिंह राठौर (Kaan Singh Rathore)</li>
+            <li><strong>लम्बाई -:</strong>5 फुट 9 इंच (5 Foot 9 Inch)</li>
+            <li><strong>जन्म दिनांक -:</strong>7 अगस्त 1999 (07/08/1999)</li>
+            <li><strong>कार्य -:</strong> Web Developer and PF Esic Consultant </li>
+            <li><strong>शिक्षण -:</strong>B.Tech (Computer Science)</li>
+            <li><strong>पिता -:</strong> मनोहर सिंह राठौर ( Manohar Singh Rathore )</li>
+            <li><strong>मो. -:</strong>7891017587 ,9351449699</li>
+            <li><strong>माता -:</strong>संतोष कंवर ( Santosh Kanwar )</li>
+            <li><strong>दादाजी -:</strong>माधो सिंह राठौर (Madho Singh Rathore)</li>
+            <li><strong>गोत्र -:</strong> मेड़तिया राठौर ( माधो-दासोत )</li>
+            <li><strong>ननिहाल -:</strong>निर्वाण </li>
+            <li><strong>जन्म स्थान -:</strong>जयपुर ( Jaipur )</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const splashScreen = document.getElementById("splash-screen");
+
+      setTimeout(() => {
+        splashScreen.classList.add("hidden");
+        document.getElementById("main-content").style.display = "flex";
+      }, 2000);
+
+      splashScreen.addEventListener("transitionend", () => {
+        if (splashScreen.classList.contains("hidden")) {
+          splashScreen.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
